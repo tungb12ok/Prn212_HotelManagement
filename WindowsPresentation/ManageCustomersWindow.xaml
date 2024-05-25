@@ -1,0 +1,47 @@
+﻿<Window x:Class="WindowsPresentation.ManageCustomersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:WindowsPresentation"
+        mc:Ignorable="d"
+        Title="Manage Customers" Height="800" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBox Width="200" Height="20" Name="txtSearch"/>
+                <Button Content="Search Customer" Click="SearchCustomer_Click" Margin="10" />
+            </StackPanel>
+            
+            <Label Content="Id:" Margin="5"/>
+            <TextBox x:Name="IdTextBox" Margin="5" IsReadOnly="True"/>
+            
+            <Label Content="Full Name:" Margin="5"/>
+            <TextBox x:Name="FullNameTextBox" Margin="5"/>
+
+            <Label Content="Telephone:" Margin="5"/>
+            <TextBox x:Name="TelephoneTextBox" Margin="5"/>
+
+            <Label Content="Email:" Margin="5"/>
+            <TextBox x:Name="EmailTextBox" Margin="5"/>
+
+            <Label Content="Password:" Margin="5"/>
+            <PasswordBox x:Name="PasswordBox" Margin="5"/>
+
+            <Label Content="Birthday:" Margin="5"/>
+            <DatePicker x:Name="BirthdayDatePicker" Margin="5"/>
+
+            <Label Content="Status:" Margin="5"/>
+            <ComboBox x:Name="StatusComboBox" Margin="5"
+                      DisplayMemberPath="Name" SelectedValuePath="Id"/>
+
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Add Customer" Click="AddCustomer_Click" Margin="10" />
+                <Button Content="Edit Customer" Click="EditCustomer_Click" Margin="10" />
+                <Button Content="Delete Customer" Click="DeleteCustomer_Click" Margin="10" />
+            </StackPanel>
+
+            <DataGrid x:Name="CustomersDataGrid" AutoGenerateColumns="True" Margin="10" SelectionChanged="CustomersDataGrid_SelectionChanged"/>
+        </StackPanel>
+    </Grid>
+</Window>
