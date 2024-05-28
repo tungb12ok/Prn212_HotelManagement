@@ -8,6 +8,7 @@
         Title="Customer Window" Height="350" Width="525">
     <Grid>
         <StackPanel>
+            <Button Content="Booking Room" Click="BookingRoom_Click" Margin="10"/>
             <Button Content="Manage Profile" Click="ManageProfile_Click" Margin="10"/>
             <Button Content="View Booking History" Click="ViewBookingHistory_Click" Margin="10"/>
         </StackPanel>

@@ -41,6 +41,16 @@ namespace WindowsPresentation
         {
             RoomsDataGrid.ItemsSource = _context.RoomInformations
                 .Include(r => r.RoomType)
+                .Select(x =>  new
+                {
+                    x.RoomId,
+                    x.RoomNumber,
+                    x.RoomStatus,
+                    x.RoomType.RoomTypeName,
+                    x.RoomMaxCapacity,
+                    x.RoomDetailDescription,
+                    x.RoomPricePerDay,
+                })
                 .ToList();
         }
 

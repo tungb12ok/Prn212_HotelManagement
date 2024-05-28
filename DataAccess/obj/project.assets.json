@@ -2451,7 +2451,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tungl\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -2459,18 +2459,16 @@
       "projectUniqueName": "D:\\Workspace\\SP_PRN212\\HotelManagement\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
       "projectPath": "D:\\Workspace\\SP_PRN212\\HotelManagement\\DataAccess\\DataAccess.csproj",
-      "packagesPath": "C:\\Users\\tungl\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "D:\\Workspace\\SP_PRN212\\HotelManagement\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tungl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2483,11 +2481,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2529,7 +2522,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.422\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Admin\\.dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
       }
     }
   }

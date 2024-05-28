@@ -79,3 +79,5 @@ D:\Workspace\SP_PRN212\HotelManagement\WindowsPresentation\obj\Debug\net6.0-wind
 D:\Workspace\SP_PRN212\HotelManagement\WindowsPresentation\obj\Debug\net6.0-windows\ProfileWindow.g.cs
 D:\Workspace\SP_PRN212\HotelManagement\WindowsPresentation\obj\Debug\net6.0-windows\BookingHistoryWindow.baml
 D:\Workspace\SP_PRN212\HotelManagement\WindowsPresentation\obj\Debug\net6.0-windows\ProfileWindow.baml
+D:\Workspace\SP_PRN212\HotelManagement\WindowsPresentation\obj\Debug\net6.0-windows\BookingWindow.g.cs
+D:\Workspace\SP_PRN212\HotelManagement\WindowsPresentation\obj\Debug\net6.0-windows\BookingWindow.baml

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using DataAccess.Models;
+using WindowsPresentation.LoginViewModel;
 
 namespace WindowsPresentation;
 
@@ -19,19 +20,19 @@ public partial class BookingHistoryWindow : Window
     {
         var bookingHistory = _context.BookingReservations
             .Where(b => b.CustomerId == customerId)
-            .Select(b => new
+            .Select(b => new BookingHistoryViewModel
             {
-                b.BookingReservationId,
-                b.BookingDate,
-                b.TotalPrice,
-                b.BookingStatus,
-                Rooms = b.BookingDetails.Select(d => new
+                BookingReservationId = b.BookingReservationId,
+                BookingDate = b.BookingDate,
+                TotalPrice = b.TotalPrice,
+                BookingStatus = b.BookingStatus,
+                Rooms = b.BookingDetails.Select(d => new RoomDetailViewModel
                 {
-                    d.Room.RoomNumber,
-                    d.StartDate,
-                    d.EndDate,
-                    d.ActualPrice
-                })
+                    RoomNumber = d.Room.RoomNumber,
+                    StartDate = d.StartDate,
+                    EndDate = d.EndDate,
+                    ActualPrice = d.ActualPrice
+                }).ToList()
             })
             .ToList();
 

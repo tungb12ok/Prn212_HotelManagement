@@ -41,7 +41,7 @@ public class CustomerDAO
 
     public Customer GetCustomerById(int customerId)
     {
-        return new Customer();
+        return _context.Customers.FirstOrDefault(x => x.CustomerId == customerId);
     }
 
     public List<Customer> GetAllCustomers()

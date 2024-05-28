@@ -12,4 +12,3 @@ D:\Workspace\SP_PRN212\HotelManagement\DataAccess\obj\Debug\net6.0\refint\DataAc
 D:\Workspace\SP_PRN212\HotelManagement\DataAccess\obj\Debug\net6.0\DataAccess.pdb
 D:\Workspace\SP_PRN212\HotelManagement\DataAccess\obj\Debug\net6.0\DataAccess.genruntimeconfig.cache
 D:\Workspace\SP_PRN212\HotelManagement\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll
-D:\Workspace\SP_PRN212\HotelManagement\DataAccess\bin\Debug\net6.0\appsettings.json

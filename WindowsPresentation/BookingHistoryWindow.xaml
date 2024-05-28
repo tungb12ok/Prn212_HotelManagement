@@ -8,7 +8,44 @@
         Title="Booking History" Height="800" Width="800">
     <Grid>
         <StackPanel>
-            <DataGrid x:Name="BookingHistoryDataGrid" AutoGenerateColumns="True" Margin="10"/>
+            <DataGrid x:Name="BookingHistoryDataGrid" AutoGenerateColumns="False" Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Booking ID" Binding="{Binding BookingReservationId}" Width="*" />
+                    <DataGridTextColumn Header="Booking Date" Binding="{Binding BookingDate}" Width="*" />
+                    <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" Width="*" />
+                    <DataGridTextColumn Header="Booking Status" Binding="{Binding BookingStatus}" Width="*" />
+                    <DataGridTemplateColumn Header="Rooms" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ItemsControl ItemsSource="{Binding Rooms}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Margin="0,0,0,10">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Room Number: " FontWeight="Bold" />
+                                                    <TextBlock Text="{Binding RoomNumber}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Start Date: " FontWeight="Bold" />
+                                                    <TextBlock Text="{Binding StartDate}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="End Date: " FontWeight="Bold" />
+                                                    <TextBlock Text="{Binding EndDate}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Actual Price: " FontWeight="Bold" />
+                                                    <TextBlock Text="{Binding ActualPrice}" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
     </Grid>
 </Window>

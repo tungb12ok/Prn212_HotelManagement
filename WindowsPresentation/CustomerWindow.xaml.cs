@@ -22,4 +22,10 @@ public partial class CustomerWindow : Window
        BookingHistoryWindow bookingHistoryWindow = new  BookingHistoryWindow(_customerId);
        bookingHistoryWindow.Show();
     }
+
+    private void BookingRoom_Click(object sender, RoutedEventArgs e)
+    {
+        BookingWindow bookingWindow = new BookingWindow(_customerId);
+        bookingWindow.Show();
+    }
 }

@@ -10,7 +10,6 @@ D:\Workspace\SP_PRN212\HotelManagement\BusineessLogic\obj\Debug\net6.0\Busineess
 D:\Workspace\SP_PRN212\HotelManagement\BusineessLogic\obj\Debug\net6.0\refint\BusineessLogic.dll
 D:\Workspace\SP_PRN212\HotelManagement\BusineessLogic\obj\Debug\net6.0\BusineessLogic.pdb
 D:\Workspace\SP_PRN212\HotelManagement\BusineessLogic\obj\Debug\net6.0\ref\BusineessLogic.dll
-D:\Workspace\SP_PRN212\HotelManagement\BusineessLogic\bin\Debug\net6.0\appsettings.json
 D:\Workspace\SP_PRN212\HotelManagement\BusineessLogic\bin\Debug\net6.0\DataAccess.dll
 D:\Workspace\SP_PRN212\HotelManagement\BusineessLogic\bin\Debug\net6.0\DataAccess.pdb
 D:\Workspace\SP_PRN212\HotelManagement\BusineessLogic\obj\Debug\net6.0\BusineessLogic.csproj.CopyComplete
