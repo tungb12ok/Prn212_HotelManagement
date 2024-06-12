@@ -1,0 +1,118 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Manage Rooms";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<!-- Button to trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+    Add Room
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Add Room</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-page-handler="AddRoom">
+                    <div class="form-group">
+                        <label asp-for="RoomNumber"></label>
+                        <input asp-for="RoomNumber" class="form-control"/>
+                        <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RoomDescription"></label>
+                        <textarea asp-for="RoomDescription" class="form-control"></textarea>
+                        <span asp-validation-for="RoomDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MaxCapacity"></label>
+                        <input asp-for="MaxCapacity" class="form-control"/>
+                        <span asp-validation-for="MaxCapacity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RoomTypeId"></label>
+                        <select asp-for="RoomTypeId" class="form-control">
+                            @foreach (var roomType in Model.RoomTypes)
+                            {
+                                <option value="@roomType.RoomTypeId">@roomType.RoomTypeName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RoomStatus"></label>
+                        <select asp-for="RoomStatus" class="form-control">
+                            @foreach (var status in Model.RoomStatuses)
+                            {
+                                <option value="@status.Id">@status.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="RoomStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PricePerDay"></label>
+                        <input asp-for="PricePerDay" class="form-control"/>
+                        <span asp-validation-for="PricePerDay" class="text-danger"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table id="roomTable" class="table table-striped table-bordered">
+    <thead class="thead-dark">
+    <tr>
+        <th>Room Number</th>
+        <th>Description</th>
+        <th>Capacity</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Price Per Day</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var room in Model.Rooms)
+    {
+        <tr>
+            <td>@room.RoomNumber</td>
+            <td>@room.RoomDetailDescription</td>
+            <td>@room.RoomMaxCapacity</td>
+            <td>@room.RoomType.RoomTypeName</td>
+            <td>@(room.RoomStatus == 1 ? "Active" : "Deleted")</td>
+            <td>@room.RoomPricePerDay</td>
+            <td>
+                <form method="post" asp-page-handler="DeleteRoom">
+                    <input type="text" name="DeleteRoomId" asp-for="DeleteRoomId" value="@room.RoomId" hidden=""/>
+                    <a href="/Rooms/Edit?id=@room.RoomId" class="btn btn-primary">
+                        Edit
+                    </a>
+                    <button type="submit" class="btn btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#roomTable').DataTable();
+        });
+    </script>
+}

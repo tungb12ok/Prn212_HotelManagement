@@ -1,0 +1,51 @@
+@page
+@model Page.Pages.Rooms.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<form method="post" asp-page-handler="EditRoom">
+    <input type="hidden" asp-for="RoomId" />
+    <div class="form-group">
+        <label asp-for="RoomNumber"></label>
+        <input asp-for="RoomNumber" class="form-control" />
+        <span asp-validation-for="RoomNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RoomDescription"></label>
+        <textarea asp-for="RoomDescription" class="form-control"></textarea>
+        <span asp-validation-for="RoomDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MaxCapacity"></label>
+        <input asp-for="MaxCapacity" class="form-control" />
+        <span asp-validation-for="MaxCapacity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RoomTypeId"></label>
+        <select asp-for="RoomTypeId" class="form-control">
+            @foreach (var roomType in Model.RoomTypes)
+            {
+            <option value="@roomType.RoomTypeId">@roomType.RoomTypeName</option>
+            }
+        </select>
+        <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RoomStatus"></label>
+        <select asp-for="RoomStatus" class="form-control">
+            @foreach (var status in Model.RoomStatuses)
+            {
+            <option value="@status.Id">@status.Name</option>
+            }
+        </select>
+        <span asp-validation-for="RoomStatus" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PricePerDay"></label>
+        <input asp-for="PricePerDay" class="form-control" />
+        <span asp-validation-for="PricePerDay" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>

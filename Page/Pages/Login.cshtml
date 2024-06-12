@@ -1,0 +1,27 @@
+@page
+@model Page.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Input.EmailAddress" class="control-label"></label>
+        <input asp-for="Input.EmailAddress" class="form-control" />
+        <span asp-validation-for="Input.EmailAddress" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.Password" class="control-label"></label>
+        <input asp-for="Input.Password" type="password" class="form-control" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+@if (!Model.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        Invalid email address or password. Please try again.
+    </div>
+}

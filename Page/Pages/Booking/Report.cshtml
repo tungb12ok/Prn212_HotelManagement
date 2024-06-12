@@ -1,0 +1,53 @@
+@page
+@model Page.Pages.Booking.ReportModel
+@{
+    ViewData["Title"] = "Report";
+}
+
+<h2>Generate Booking Report</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label>Start Date:</label>
+        <input type="date" asp-for="StartDate" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>End Date:</label>
+        <input type="date" asp-for="EndDate" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Generate Report</button>
+</form>
+
+@if (Model.ReportData != null && Model.ReportData.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Reservation ID</th>
+            <th>Customer</th>
+            <th>Booking Date</th>
+            <th>Total Price</th>
+            <th>Status</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.ReportData)
+        {
+            <tr>
+                <td>@item.BookingReservationId</td>
+                <td>@item.CustomerName</td>
+                <td>@item.BookingDate?.ToString("d")</td>
+                <td>$@item.TotalPrice?.ToString("N2")</td>
+                <td>@item.BookingStatus</td>
+                <td>
+                    @foreach (var room in item.Rooms)
+                    {
+                        <p>Room: @room.RoomNumber (From @room.StartDate.ToString("d") to @room.EndDate.ToString("d")) - $@room.ActualPrice?.ToString("N2")</p>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

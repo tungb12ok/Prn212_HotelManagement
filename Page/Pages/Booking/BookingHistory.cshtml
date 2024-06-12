@@ -1,0 +1,35 @@
+@page
+@model Page.Pages.Booking.BookingHistoryModel
+@{
+    ViewData["Title"] = "BookingHistory";
+}
+
+<h1>BookingHistory</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Reservation ID</th>
+        <th>Booking Date</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Room Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var booking in Model.BookingHistory)
+    {
+        <tr>
+            <td>@booking.BookingReservationId</td>
+            <td>@booking.BookingDate</td>
+            <td>$@booking.TotalPrice</td>
+            <td>@booking.BookingStatus</td>
+            <td>
+                @foreach (var room in booking.Rooms)
+                {
+                    <p>Room: @room.RoomNumber (From @room.StartDate.ToShortDateString() to @room.EndDate.ToShortDateString()) - $@room.ActualPrice</p>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,117 @@
+@page
+@model Page.Pages.ManageCustomers.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+    Add Customer
+</button>
+
+
+<!-- Add Customer Modal -->
+<div class="modal fade" id="addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="addCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCustomerModalLabel">Add Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" asp-handler="AddCustomer">
+                <div class="modal-body">
+                    <input asp-for="NewCustomer.CustomerFullName" class="form-control" placeholder="Full Name" />
+                    <input asp-for="NewCustomer.Telephone" class="form-control" placeholder="Telephone" />
+                    <input asp-for="NewCustomer.EmailAddress" class="form-control" placeholder="Email" />
+                    <input asp-for="NewCustomer.Password" type="password" class="form-control" placeholder="Password" />
+                    <input asp-for="NewCustomer.CustomerBirthday" type="date" class="form-control" />
+                    <select asp-for="NewCustomer.CustomerStatus" class="form-control">
+                        <option value="1">Active</option>
+                        <option value="0">Deleted</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Customers Table -->
+<table class="table">
+    <thead>
+    <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var customer in Model.Customers)
+    {
+    <tr>
+        <td>@customer.CustomerFullName</td>
+        <td>@customer.EmailAddress</td>
+        <td>
+            <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#editCustomerModal-@customer.CustomerId">Edit</button>
+            <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteCustomerModal-@customer.CustomerId">Delete</button>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+<!-- Edit Customer Modal -->
+@foreach (var customer in Model.Customers)
+{
+<div class="modal fade" id="editCustomerModal-@customer.CustomerId" tabindex="-1" role="dialog" aria-labelledby="editCustomerModalLabel-@customer.CustomerId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCustomerModalLabel-@customer.CustomerId">Edit Customer</h5>
+            </div>
+            <form method="post" asp-handler="EditCustomer">
+                <div class="modal-body">
+                    <input type="hidden" asp-for="Customer.CustomerId" value="@customer.CustomerId" />
+                    <input asp-for="Customer.CustomerFullName" class="form-control" value="@customer.CustomerFullName"/>
+                    <input asp-for="Customer.Telephone" class="form-control" value="@customer.Telephone"/>
+                    <input asp-for="Customer.EmailAddress" class="form-control" value="@customer.EmailAddress"/>
+                    <input asp-for="Customer.Password" type="password" class="form-control" value="@customer.Password"/>
+                    <input asp-for="Customer.CustomerBirthday" type="date" class="form-control" value="@customer.CustomerBirthday"/>
+                    <select asp-for="Customer.CustomerStatus" class="form-control">
+                        <option value="1">Active</option>
+                        <option value="0">Deleted</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+}
+
+@foreach (var customer in Model.Customers)
+{
+<div class="modal fade" id="deleteCustomerModal-@customer.CustomerId" tabindex="-1" role="dialog" aria-labelledby="deleteCustomerModalLabel-@customer.CustomerId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteCustomerModalLabel-@customer.CustomerId">Delete Customer</h5>
+            </div>
+            <form method="post" asp-handler="DeleteCustomer">
+                <div class="modal-body">
+                    Are you sure you want to delete @customer.CustomerFullName?
+                    <input type="hidden" asp-for="Customer.CustomerId" value="@customer.CustomerId" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+}
