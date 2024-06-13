@@ -1,0 +1,60 @@
+@page
+@model Page.Pages.Booking.BookingModel
+@{
+    ViewData["Title"] = "Booking";
+}
+<h1>Booking</h1>
+<form method="post" asp-page="Index">
+    <div class="form-group">
+        <label>CustomerId:</label>
+        <input asp-for="customerId" name="customerId" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Ngày bắt đầu:</label>
+        <input type="date" asp-for="StartDate" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Ngày kết thúc:</label>
+        <input type="date" asp-for="EndDate" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label>Search Room:</label>
+        <input type="text" id="roomSearch" class="form-control" placeholder="Type to search rooms...">
+    </div>
+
+    <div id="room-list">
+        @foreach (var room in Model.Rooms)
+        {
+        <div class="checkbox" style="display:block;">
+            <label>
+                <input type="checkbox" name="RoomIds" value="@room.Value" class="room-option"/>
+                @room.Text
+            </label>
+        </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Đặt phòng</button>
+</form>
+@section Scripts {
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchBox = document.getElementById('roomSearch');
+        const roomOptions = document.querySelectorAll('.room-option');
+
+        searchBox.addEventListener('input', function() {
+            const searchText = searchBox.value.toLowerCase();
+            roomOptions.forEach(option => {
+                const label = option.parentElement.textContent.toLowerCase();
+                if (label.includes(searchText)) {
+                    option.parentElement.parentElement.style.display = 'block';
+                } else {
+                    option.parentElement.parentElement.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+}
+

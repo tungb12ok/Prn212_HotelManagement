@@ -67,9 +67,7 @@ namespace DataAccess.Models
             {
                 entity.ToTable("BookingReservation");
 
-                entity.Property(e => e.BookingReservationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("BookingReservationID");
+                entity.Property(e => e.BookingReservationId).HasColumnName("BookingReservationID");
 
                 entity.Property(e => e.BookingDate).HasColumnType("date");
 
@@ -87,7 +85,7 @@ namespace DataAccess.Models
             {
                 entity.ToTable("Customer");
 
-                entity.HasIndex(e => e.EmailAddress, "UQ__Customer__49A147406D0DB964")
+                entity.HasIndex(e => e.EmailAddress, "UQ__Customer__49A147401F1370FC")
                     .IsUnique();
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
