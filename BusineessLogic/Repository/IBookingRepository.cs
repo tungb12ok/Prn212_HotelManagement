@@ -10,4 +10,7 @@ public interface IBookingRepository
     BookingReservation GetBookingById(int bookingId);
     List<BookingReservation> GetAllBookings();
     List<BookingReservation> GetBookingsByCustomerId(int customerId);
+    Task<bool> ProcessBookingAsync(int[] roomIds, DateTime startDate, DateTime endDate, int customerId);
+    Task<List<RoomInformation>> GetAvailableRoomsAsync();
+    Task UpdateRoomStatusesAsync();
 }

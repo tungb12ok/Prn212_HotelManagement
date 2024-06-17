@@ -6,6 +6,7 @@ using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Page.ViewModel;
 
@@ -14,10 +15,12 @@ namespace Page.Pages.Booking
     public class BookingModel : PageModel
     {
         private readonly FUMiniHotelManagementContext _context;
+        private readonly IHubContext<BookingHub> _hubContext;
 
-        public BookingModel(FUMiniHotelManagementContext context)
+        public BookingModel(FUMiniHotelManagementContext context, IHubContext<BookingHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         [BindProperty] public DateTime StartDate { get; set; }
@@ -72,6 +75,7 @@ namespace Page.Pages.Booking
             // Create booking details for each room
             foreach (var room in rooms)
             {
+                room.RoomStatus = 0;
                 var bookingDetail = new BookingDetail()
                 {
                     BookingReservationId = bookingReservation.BookingReservationId,
@@ -81,12 +85,15 @@ namespace Page.Pages.Booking
                     ActualPrice = room.RoomPricePerDay * days
                 };
                 _context.BookingDetails.Add(bookingDetail);
+                // Sau khi xử lý xong, gửi cập nhật đến tất cả clients
+                await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("ReceiveRoomUpdate", RoomIds);
             }
 
             // Commit all booking details at once
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./BookingConfirmation");
+            return RedirectToPage("/Booking/BookingHistory");
         }
     }
 }

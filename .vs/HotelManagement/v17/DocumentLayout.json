@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Workspace\\SP_PRN212\\HotelManagement\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{D926B8A9-36E6-443B-A702-F648DFC663F4}|Page\\Page.csproj|d:\\workspace\\sp_prn212\\hotelmanagement\\page\\pages\\rooms\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D926B8A9-36E6-443B-A702-F648DFC663F4}|Page\\Page.csproj|solutionrelative:page\\pages\\rooms\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D926B8A9-36E6-443B-A702-F648DFC663F4}|Page\\Page.csproj|d:\\workspace\\sp_prn212\\hotelmanagement\\page\\pages\\rooms\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D926B8A9-36E6-443B-A702-F648DFC663F4}|Page\\Page.csproj|solutionrelative:page\\pages\\rooms\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -63,32 +54,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:131:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "D:\\Workspace\\SP_PRN212\\HotelManagement\\Page\\Pages\\Rooms\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "Page\\Pages\\Rooms\\Index.cshtml.cs",
-              "ToolTip": "D:\\Workspace\\SP_PRN212\\HotelManagement\\Page\\Pages\\Rooms\\Index.cshtml.cs",
-              "RelativeToolTip": "Page\\Pages\\Rooms\\Index.cshtml.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAmwCoAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T11:56:50.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Workspace\\SP_PRN212\\HotelManagement\\Page\\Pages\\Rooms\\Index.cshtml",
-              "RelativeDocumentMoniker": "Page\\Pages\\Rooms\\Index.cshtml",
-              "ToolTip": "D:\\Workspace\\SP_PRN212\\HotelManagement\\Page\\Pages\\Rooms\\Index.cshtml",
-              "RelativeToolTip": "Page\\Pages\\Rooms\\Index.cshtml",
-              "ViewState": "AQIAAEYAAAAAAAAAAADwv1cAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-11T11:56:47.673Z",
-              "EditorCaption": ""
             }
           ]
         }
