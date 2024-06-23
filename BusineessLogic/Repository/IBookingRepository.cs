@@ -13,4 +13,9 @@ public interface IBookingRepository
     Task<bool> ProcessBookingAsync(int[] roomIds, DateTime startDate, DateTime endDate, int customerId);
     Task<List<RoomInformation>> GetAvailableRoomsAsync();
     Task UpdateRoomStatusesAsync();
+    Task<decimal> CalculateTotalPriceAsync(int[] roomIds, DateTime startDate, DateTime endDate);
+    Task<int> CreateBookingReservationAsync(BookingReservation bookingReservation);
+    Task CreateBookingDetailAsync(int bookingReservationId, int roomId, DateTime startDate, DateTime endDate, decimal actualPrice);
+    Task<decimal> ActualTotalPriceAsync(int[] roomIds, DateTime startDate, DateTime endDate);
+
 }

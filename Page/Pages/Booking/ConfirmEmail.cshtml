@@ -1,0 +1,18 @@
+﻿@page
+@model Page.Pages.Booking.ConfirmEmail
+
+@{
+    Layout = null;
+}
+
+<h1>Order Detail</h1>
+
+<div>
+    <p>Booking ID: @Model.BookingId</p>
+    <p>Total Price: @Model.TotalPrice.ToString("C")</p>
+    <form method="post">
+        <input type="hidden" asp-for="BookingId" />
+        <input type="hidden" asp-for="TotalPrice" />
+        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+    </form>
+</div>

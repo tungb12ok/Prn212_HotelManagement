@@ -12,11 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.6.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Booking\" />
     <Folder Include="Pages\ManageCustomers\" />
   </ItemGroup>
 

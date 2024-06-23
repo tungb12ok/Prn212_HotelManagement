@@ -257,3 +257,9 @@ D:\Workspace\SP_PRN212\HotelManagement\Page\obj\Debug\net6.0\Page.pdb
 D:\Workspace\SP_PRN212\HotelManagement\Page\obj\Debug\net6.0\Page.genruntimeconfig.cache
 D:\Workspace\SP_PRN212\HotelManagement\Page\obj\Debug\net6.0\ref\Page.dll
 D:\Workspace\SP_PRN212\HotelManagement\Page\bin\Debug\net6.0\libman.json
+D:\Workspace\SP_PRN212\HotelManagement\Page\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+D:\Workspace\SP_PRN212\HotelManagement\Page\bin\Debug\net6.0\MailKit.dll
+D:\Workspace\SP_PRN212\HotelManagement\Page\bin\Debug\net6.0\MimeKit.dll
+D:\Workspace\SP_PRN212\HotelManagement\Page\bin\Debug\net6.0\System.Formats.Asn1.dll
+D:\Workspace\SP_PRN212\HotelManagement\Page\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Workspace\SP_PRN212\HotelManagement\Page\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll

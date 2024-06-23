@@ -5,12 +5,14 @@ namespace BusineessLogic.Repository;
 
 public class BookingRepository : IBookingRepository
 {
+    public BookingRepository(FUMiniHotelManagementContext context)
+    {
+        _context = context;
+    }
+
     private readonly FUMiniHotelManagementContext _context;
 
-    public BookingRepository()
-    {
-        _context = new FUMiniHotelManagementContext();
-    }
+  
 
     public void AddBooking(BookingReservation booking)
     {
@@ -107,7 +109,8 @@ public class BookingRepository : IBookingRepository
     {
         var currentDate = DateTime.Now;
         var roomsToUpdate = await _context.BookingDetails
-            .Where(bd => bd.EndDate <= currentDate && bd.Room.RoomStatus != 1) // Assuming 1 means available
+            .Include(xx => xx.BookingReservation)
+            .Where(bd => bd.EndDate <= currentDate && bd.Room.RoomStatus != 1 && bd.BookingReservation.BookingStatus == 1) // Assuming 1 means available
             .Select(bd => bd.Room)
             .Distinct()
             .ToListAsync();
@@ -118,5 +121,81 @@ public class BookingRepository : IBookingRepository
         }
 
         await _context.SaveChangesAsync();
+    }
+    public async Task<decimal> CalculateTotalPriceAsync(int[] roomIds, DateTime startDate, DateTime endDate)
+    {
+        decimal totalPrice = 0;
+
+        var rooms = await _context.RoomInformations
+            .Where(r => roomIds.Contains(r.RoomId))
+            .ToListAsync();
+
+        int days = (endDate - startDate).Days;
+
+        foreach (var room in rooms)
+        {
+            totalPrice += (room.RoomPricePerDay ?? 0) * days;
+        }
+
+        return totalPrice;
+    }
+    public async Task<int> CreateBookingReservationAsync(BookingReservation bookingReservation)
+    {
+        _context.BookingReservations.Add(bookingReservation);
+        await _context.SaveChangesAsync();
+        
+        return bookingReservation.BookingReservationId; // Return the ID of the newly created booking reservation
+    }
+    public async Task<int> CreateBookingReservationAsync(int customerId, decimal totalPrice)
+    {
+        var bookingReservation = new BookingReservation()
+        {
+            CustomerId = customerId,
+            BookingDate = DateTime.Now,
+            BookingStatus = 1,
+            TotalPrice = totalPrice
+        };
+
+        _context.BookingReservations.Add(bookingReservation);
+        await _context.SaveChangesAsync();
+
+        return bookingReservation.BookingReservationId;
+    }
+
+    public async Task CreateBookingDetailAsync(int bookingReservationId, int roomId, DateTime startDate, DateTime endDate, decimal actualPrice)
+    {
+        var room = await _context.RoomInformations.FindAsync(roomId);
+        if (room != null)
+        {
+            room.RoomStatus = 0;
+            var bookingDetail = new BookingDetail()
+            {
+                BookingReservationId = bookingReservationId,
+                RoomId = roomId,
+                StartDate = startDate,
+                EndDate = endDate,
+                ActualPrice = actualPrice
+            };
+
+            _context.BookingDetails.Add(bookingDetail);
+            await _context.SaveChangesAsync();
+        }
+    }
+    public async Task<decimal> ActualTotalPriceAsync(int[] roomIds, DateTime startDate, DateTime endDate)
+    {
+        decimal totalPrice = 0;
+
+        var rooms = await _context.RoomInformations
+            .Where(r => roomIds.Contains(r.RoomId))
+            .ToListAsync();
+
+        int days = (endDate - startDate).Days;
+
+        foreach (var room in rooms)
+        {
+            totalPrice += (room.RoomPricePerDay ?? 0) * days;
+        }
+
+        return totalPrice;
     }
 }

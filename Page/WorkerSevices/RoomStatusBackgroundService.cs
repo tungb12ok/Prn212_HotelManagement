@@ -33,7 +33,7 @@ public class RoomStatusBackgroundService : BackgroundService
             {
                 _logger.LogError(ex, "Error updating room statuses.");
             }
-
+            // after 1h re-start
             await Task.Delay(TimeSpan.FromHours(1), stoppingToken); // Check every hour
         }
         
